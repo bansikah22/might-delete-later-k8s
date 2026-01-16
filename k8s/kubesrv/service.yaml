@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubesrv-svc
+  namespace: kubesrv-ns
+  labels:
+    app: kubesrv
+spec:
+  selector:
+    app: kubesrv
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 80
+    protocol: TCP
+
+  
