@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubesrv-cm-volume
+  namespace: kubesrv-ns
+data:
+  # MESSAGE: "Hello from ConfigMap!"
+  # PORT: "80"
+  welcome.txt: |
+    Welcome to kubesrv!
+    This file is mounted from a ConfigMap.
+    Happy Kubernetes learning!
