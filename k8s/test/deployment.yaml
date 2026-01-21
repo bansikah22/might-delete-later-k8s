@@ -4,6 +4,7 @@ metadata:
   name: kubesrv
   labels:
     app: kubesrv
+  namespace: kubesrv-ns
 spec: 
    replicas: 3
    selector: 
