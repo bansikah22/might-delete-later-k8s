@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubesrv
+  labels:
+    app: kubesrv
+spec: 
+   replicas: 3
+   selector: 
+     matchLabels:
+       app: kubesrv
+   template: 
+     metadata:
+      labels:
+        app: kubesrv
+     spec: 
+       containers: 
+       - name: kubesrv
+         image: bansikah/kubesrv:latest
+         ports:
+           - name: http
+             containerPort: 80
+     
