@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubesrv-svc
+  namespace: kubesrv-ns
+spec: 
+  selector:
+    app: kubesrv
+  ports:
+   - protocol: TCP
+     port: 8080
+     targetPort: 80
+  
