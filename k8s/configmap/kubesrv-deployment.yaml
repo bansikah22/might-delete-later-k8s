@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubesrv
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kubesrv
+  template:
+    metadata:
+      labels:
+        app: kubesrv
+    spec:
+      containers:
+        - name: kubesrv
+          image: bansikah/kubesrv:1.0.0
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: kubesrv-config
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"

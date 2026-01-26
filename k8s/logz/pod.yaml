@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-sidecar-logs
+  labels:
+    app: sidecar-logging-demo
+spec:
+  restartPolicy: Always
+
+  volumes:
+    - name: shared-logs
+      emptyDir: {}
+
+  securityContext:
+    fsGroup: 2000
+
+  containers:
+    # Main application container
+    - name: app
+      image: busybox:1.36
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          while true; do
+            echo "$(date) - App is running" >> /var/log/app.log
+            sleep 5
+          done
+      resources:
+        requests:
+          cpu: "50m"
+          memory: "64Mi"
+        limits:
+          cpu: "100m"
+          memory: "128Mi"
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        readOnlyRootFilesystem: true
+        allowPrivilegeEscalation: false
+      volumeMounts:
+        - name: shared-logs
+          mountPath: /var/log
+      livenessProbe:
+        exec:
+          command: ["sh", "-c", "test -f /var/log/app.log"]
+        initialDelaySeconds: 10
+        periodSeconds: 10
+
+    # Log sidecar container
+    - name: log-sidecar
+      image: busybox:1.36
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          tail -f /var/log/app.log
+      resources:
+        requests:
+          cpu: "10m"
+          memory: "32Mi"
+        limits:
+          cpu: "50m"
+          memory: "64Mi"
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        readOnlyRootFilesystem: true
+        allowPrivilegeEscalation: false
+      volumeMounts:
+        - name: shared-logs
+          mountPath: /var/log
