@@ -1,4 +1,4 @@
-package errorhandling;
+package java.errorhandling;
 
 public class Calculator {
     int x;

@@ -1,4 +1,4 @@
-package generics.practice3;
+package java.generics.practice3;
 
 /**
  * Bounded generics example , generics is bounded only to a specific type which Number

@@ -1,4 +1,4 @@
-package generics.practice3;
+package java.generics.practice3;
 
 public class MathUtils {
     

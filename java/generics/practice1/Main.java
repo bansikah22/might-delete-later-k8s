@@ -1,4 +1,4 @@
-package generics.practice1;
+package java.generics.practice1;
 /**
  * A simple demonstration of a generic Box class that can hold any type of object.
  * This example shows how to create Box instances for different types (String and Integer).

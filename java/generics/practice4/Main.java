@@ -1,4 +1,4 @@
-package generics.practice4;
+package java.generics.practice4;
 
 /**
 Generics exist for safety

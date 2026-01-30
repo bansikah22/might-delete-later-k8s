@@ -1,4 +1,4 @@
-package generics.practice1;
+package java.generics.practice1;
 
 public class Box<T> {
     private T value;

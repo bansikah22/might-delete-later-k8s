@@ -1,4 +1,4 @@
-package generics.practice2;
+package java.generics.practice2;
 
 public class Printer<T> {
     
