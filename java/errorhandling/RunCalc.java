@@ -1,5 +1,4 @@
 package java.errorhandling;
-import java.errorhandling.Calculator;
 
 public class RunCalc {
 
