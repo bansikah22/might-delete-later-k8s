@@ -1,7 +1,11 @@
 package java.functionalinterfaces.uservalidation;
 
+import java.util.List;
+import java.util.UUID;
+import java.util.function.*;
+
 public class Main {
-    
+
     public static void main(String[] args) {
 
         Supplier<String> idSupplier = () -> UUID.randomUUID().toString();
@@ -12,14 +16,18 @@ public class Main {
                 new User(idSupplier.get(), "Charlie", "charlie@mail.com", 30)
         );
 
-        Predicate<User> isAdult = u -> u.getAge() >= 18;
-        Predicate<User> hasValidEmail = u -> u.getEmail().contains("@");
+        Predicate<User> isAdult = u -> u.age() >= 18;
+        Predicate<User> hasValidEmail = u -> u.email().contains("@");
         Predicate<User> isValidUser = isAdult.and(hasValidEmail);
 
-        Function<User, User> formatUserName = user -> {
-            user.setName(user.getName().toUpperCase());
-            return user;
-        };
+        // Records are immutable → create NEW object
+        Function<User, User> formatUserName =
+                user -> new User(
+                        user.id(),
+                        user.name().toUpperCase(),
+                        user.email(),
+                        user.age()
+                );
 
         Consumer<User> printUser =
                 user -> System.out.println("VALID USER -> " + user);
@@ -30,3 +38,4 @@ public class Main {
              .forEach(printUser);
     }
 }
+
