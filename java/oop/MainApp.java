@@ -9,16 +9,16 @@ public class MainApp {
       
 
         LinuxServer linuxServer = new LinuxServer("Linux Server 2", "237.84.2.179", ServerStatus.DOWN);
-        
+        //test duplicate
+        LinuxServer duplicate = new LinuxServer("Linux Server 3", "237.84.2.179", ServerStatus.UP);
 
         WindowsServer windowsServer = new WindowsServer("Windows Server", "237.84.2.180", ServerStatus.UP);
   
-        
         Set<Server> servers = new HashSet<>();
         servers.add(linuxServer);
         servers.add(windowsServer);
-
-        System.out.println("Pinging all servers:");
+        servers.add(duplicate);
+        
         for(Server server : servers) {
             server.ping();
         }
