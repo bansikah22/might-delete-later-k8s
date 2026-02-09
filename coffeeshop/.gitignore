@@ -1,0 +1,63 @@
+# Generic Java
+*.class
+
+# Generated files
+/bin/
+/target/
+/build/
+
+# Maven
+pom.xml.tag
+pom.xml.next
+pom.xml.bak
+pom.xml.versions
+pom.xml.releaseBackup
+poms/
+*.mvn
+# Local Maven Repository
+.m2/repository
+
+# Gradle
+.gradle/
+### Gradle-generated files
+build/
+.gradle/
+# Ignore Gradle GUI config
+gradle-app.setting
+# Ignore Gradle build output directory
+!gradle/wrapper/.gradle/
+# Ignore Gradle cache
+.gradle-cache
+
+# IDE specific files (Eclipse, IntelliJ, VS Code, etc)
+.metadata
+.classpath
+.project
+.settings/
+*.swp
+*.aps
+*.lck
+*.rgc
+*.bak
+*.tmp
+*.hprof
+*.pyc
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# OS specific files
+.DS_Store # OSX
+Thumbs.db # Windows
+
+# Log files
+logs/
+*.log
+*.log.*.gz
+*.log.gz
+
+# Secret files/credentials (optional, recommended for local files)
+src/main/resources/application-local.properties
+.env
